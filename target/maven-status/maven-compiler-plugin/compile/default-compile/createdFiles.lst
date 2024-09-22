@@ -7,7 +7,6 @@ com/distribuidos/authentication/services/facades/users/UsersFacade$1.class
 com/distribuidos/authentication/exceptions/UserAlreadyExistsException.class
 com/distribuidos/authentication/controllers/ControllerUtils.class
 com/distribuidos/authentication/services/facades/users/models/UserEntity.class
-com/distribuidos/authentication/entities/UserEntity.class
 com/distribuidos/authentication/models/ResponseBody.class
 com/distribuidos/authentication/security/JwtUtil.class
 com/distribuidos/authentication/config/WebClientConfig.class
@@ -16,7 +15,6 @@ com/distribuidos/authentication/controllers/AuthenticationController.class
 com/distribuidos/authentication/services/facades/centralizer/models/RegisterCitizenRequest.class
 com/distribuidos/authentication/models/LoginRequest$LoginRequestBuilder.class
 com/distribuidos/authentication/services/facades/centralizer/CentralizerFacade.class
-com/distribuidos/authentication/entities/UserEntity$UserEntityBuilder.class
 com/distribuidos/authentication/config/EnvironmentConfig$Domains.class
 com/distribuidos/authentication/exceptions/ErrorCodes.class
 com/distribuidos/authentication/config/EnvironmentConfig$ServiceRetry.class
