@@ -25,14 +25,6 @@ environment:
   service-name: distribuidos/authentication
   max-payload-size-in-mb: ${MAX_PAYLOAD_SIZE_IN_MB:10}
 ---
-# R2DBC
-spring:
-  r2dbc:
-    show-sql: true
-    url: r2dbc:pool:mysql://localhost:3306/mcmovies
-    username: ${DB_USER:camilo}
-    password: ${DB_PASSWORD:Yo5817282/}
----
 # Logging
 logging:
   level:

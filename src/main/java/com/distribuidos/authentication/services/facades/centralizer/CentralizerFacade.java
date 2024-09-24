@@ -14,7 +14,6 @@ import reactor.core.publisher.Mono;
 import reactor.util.retry.Retry;
 
 import static com.distribuidos.authentication.exceptions.ErrorCodes.CENTRALIZER_UPSTREAM_ERROR;
-import static org.springframework.http.MediaType.ALL;
 import static reactor.core.publisher.Mono.error;
 import static reactor.core.publisher.Mono.just;
 
@@ -44,7 +43,7 @@ public class CentralizerFacade {
                         return just(false);
                     }
 
-                    if (HttpStatus.NOT_FOUND.equals(httpStatus)) {
+                    if (HttpStatus.NOT_FOUND.equals(httpStatus) || HttpStatus.NO_CONTENT.equals(httpStatus)) {
                         log.info("User {} is not part of any external system", userDocumentId);
                         return just(true);
                     }
