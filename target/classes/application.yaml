@@ -25,14 +25,6 @@ environment:
   service-name: distribuidos/authentication
   max-payload-size-in-mb: ${MAX_PAYLOAD_SIZE_IN_MB:10}
 ---
-# R2DBC
-spring:
-  r2dbc:
-    show-sql: true
-    url: r2dbc:pool:mysql://localhost:3306/mcmovies
-    username: ${DB_USER:camilo}
-    password: ${DB_PASSWORD:Yo5817282/}
----
 # Logging
 logging:
   level:
@@ -40,5 +32,5 @@ logging:
 ---
 # Jwt
 jwt:
-  secret: EPzuE1fY/zKURZ0eklR27ULNZTpAO51+dfDWt3iJRI7zyv+UdDjXaDlkV7X1I04r89mvdet5CAWSFkfrKv+fmg==
+  secret: ${JWT_SECRET:EPzuE1fY/zKURZ0eklR27ULNZTpAO51+dfDWt3iJRI7zyv+UdDjXaDlkV7X1I04r89mvdet5CAWSFkfrKv+fmg==}
   expiration: 3600000
