@@ -91,7 +91,7 @@ public class UsersFacade {
                     HttpHeaders responseHeaders = userResponse.headers().asHttpHeaders();
                     return userResponse.bodyToMono(String.class)
                             .flatMap(responseBody -> {
-                                log.error("{} - The centralizer service responded with "
+                                log.error("{} - The users service responded with "
                                                 + "an unexpected failure response for: {}"
                                                 + "\nStatus Code: {}\nResponse Headers: {}\nResponse Body: {}",
                                         USER_BY_DOCUMENT_UPSTREAM_ERROR, resourceUri, httpStatus, responseHeaders,

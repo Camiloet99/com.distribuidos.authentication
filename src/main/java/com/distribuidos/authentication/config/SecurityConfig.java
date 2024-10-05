@@ -29,10 +29,10 @@ public class SecurityConfig {
                                                          JwtAuthenticationFilter jwtAuthenticationFilter) {
         http
                 .csrf().disable()
-                .cors().disable()
+                .cors().disable()  // Desactiva completamente CORS
                 .authorizeExchange(exchanges -> exchanges
-                        .pathMatchers("/auth/**").permitAll()
-                        .anyExchange().authenticated())
+                        .pathMatchers("/auth/**").permitAll()  // Permitir las rutas de autenticación
+                        .anyExchange().authenticated())  // Requiere autenticación para cualquier otra ruta
                 .httpBasic().disable()
                 .formLogin().disable()
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
@@ -45,32 +45,19 @@ public class SecurityConfig {
 
         return http.build();
     }
-    
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter(JwtAuthenticationConverter jwtAuthenticationConverter) {
         return new JwtAuthenticationFilter(jwtAuthenticationConverter);
     }
-    
+
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter(JwtUtil jwtUtil) {
         return new JwtAuthenticationConverter(jwtUtil);
-    }
-
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", ""));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
-        configuration.setAllowCredentials(true);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
     }
 }

@@ -68,6 +68,8 @@ public class AuthService {
 
     public Mono<UserEntity> authLoginUser(LoginRequest loginRequest) {
 
+        log.info("Authenticating user " + loginRequest.getDocument());
+
         return usersFacade.findUserByDocumentId(loginRequest.getDocument())
                 .filter(userEntity -> passwordEncoder.matches(loginRequest.getPassword(), userEntity.getPassword()))
                 .map(userEntity -> {

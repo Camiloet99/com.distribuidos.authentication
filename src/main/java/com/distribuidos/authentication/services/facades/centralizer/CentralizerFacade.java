@@ -14,6 +14,7 @@ import reactor.core.publisher.Mono;
 import reactor.util.retry.Retry;
 
 import static com.distribuidos.authentication.exceptions.ErrorCodes.CENTRALIZER_UPSTREAM_ERROR;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static reactor.core.publisher.Mono.error;
 import static reactor.core.publisher.Mono.just;
 
@@ -73,10 +74,12 @@ public class CentralizerFacade {
         return webClient
                 .post()
                 .uri(requestUri)
+                .header("accept", APPLICATION_JSON_VALUE)
+                .header("Content-Type", APPLICATION_JSON_VALUE)
                 .bodyValue(request)
                 .exchangeToMono(createCitizenResponse -> {
                     HttpStatus httpStatus = HttpStatus.valueOf(createCitizenResponse.statusCode().value());
-                    if (HttpStatus.OK.equals(httpStatus)) {
+                    if (HttpStatus.CREATED.equals(httpStatus) || HttpStatus.OK.equals(httpStatus)) {
                         return just(true);
                     }
 
